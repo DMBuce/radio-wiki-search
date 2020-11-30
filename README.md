@@ -15,4 +15,3 @@ And another for stations whose wiki summaries that include keywords `diverse`,
 excluding keywords `news`, `college`, `university`, `school`, with output in
 `keywords/variety-sans-boring.html`.
 
-# vim: set ft=text:
