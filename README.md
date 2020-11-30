@@ -3,7 +3,8 @@ parses the wikipedia page for NPR and independent radio stations, then
 searches the summary of each individual radio station's wiki page for the
 search terms specified, excluding pages that contain blacklisted search terms.
 
-In its current state, keywords are hardcoded as regexes, and the script does
+The script requires a suitably Linux-y shell with `wget`, `xmllint` and `jq`.
+In its current state, keywords are hardcoded as regexes, and it does
 two searches:
 
 One for stations whose wiki summaries include keyword `music` and exclude
