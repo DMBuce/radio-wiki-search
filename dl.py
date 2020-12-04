@@ -12,17 +12,19 @@ url = 'https://en.wikipedia.org/api/rest_v1/page/html/%s'
 r = requests.get(endpoint + query)
 j = r.json()
 
-while True:
-#for k in range(15):
-#for k in range(3):
-    for i, page in j['query']['pages'].items():
-        if page['title'].startswith("Template") or '/' in page['title']:
-            continue
+with open('data.html', 'w') as f:
+    while True:
+    #for k in range(15):
+    #for k in range(3):
+        for i, page in j['query']['pages'].items():
+            # skip pages outside the Main namespace
+            if ':' in page['title']:
+                continue
 
-        os.makedirs(os.path.dirname('data/%s/%s.html'%(page['title'][:3],page['title'])), exist_ok=True)
-        print(">> " + url % page['title'])
-        response = requests.get(url % page['title'])
-        with open('data/%s/%s.html'%(page['title'][:3],page['title']), 'w') as f:
+            # fetch wiki page
+            print(">> " + url % page['title'])
+            response = requests.get(url % page['title'])
+
             # get infobox
             tree = html.fromstring(response.content)
             infobox = tree.xpath('//table[@class="infobox vcard"]')
@@ -67,9 +69,9 @@ while True:
             f.write("</td></tr></table>")
             f.write("<hr/>\n")
 
-    if j['batchcomplete'] == "true":
-        break
+        if j['batchcomplete'] == "true":
+            break
 
-    r = requests.get(endpoint + query + ''.join('&{}={}'.format(key, value) for key, value in j['continue'].items()))
-    j = r.json()
+        r = requests.get(endpoint + query + ''.join('&{}={}'.format(key, value) for key, value in j['continue'].items()))
+        j = r.json()
 

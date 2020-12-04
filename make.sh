@@ -14,15 +14,15 @@ echo "$head" > variety.html
 echo "$head" > volunteer.html
 
 # do some searches
-egrep -ih '\b(music)\b' data/*/* \
+egrep -ih '\b(music)\b' data.html \
 	| egrep -i '\b(npr|independent)\b' \
 	| egrep -iv "$exclude" \
 	>> music.html
-egrep -ih '\b(divers(e|ity)|mix|variety|alternative|cultur(al|e))\b' data/*/* \
+egrep -ih '\b(divers(e|ity)|mix|variety|alternative|cultur(al|e))\b' data.html \
 	| egrep -i '\b(npr|independent)\b' \
 	| egrep -iv "$exclude" \
 	>> variety.html
-egrep -ih '\b(volunteer)\b' data/*/* \
+egrep -ih '\b(volunteer)\b' data.html \
 	| egrep -iv "$exclude" \
 	>> volunteer.html
 
