@@ -59,7 +59,7 @@ with open('data.html', 'w') as f:
             # write html to file
             #f.write("<style>.infobox {float: right; clear: right;}</style>\n")
             f.write("<!-- %s -->" % response.url)
-            f.write("<table><tr><td style='vertical-align:top'>")
+            f.write("<table><tr><td>")
             f.write(page['extract'].replace("\n", " "))
             f.write("<b>URL:</b> ")
             f.write(site.replace("\n", " "))

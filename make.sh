@@ -4,7 +4,10 @@
 cd "$(dirname "$0")"
 
 # define some vars
-head="<html><body>"
+head="<html><body><style>
+	img { visibility:hidden; display:none; }
+	td { vertical-align:top; }
+</style>"
 foot="</html></body>"
 exclude='\b(news|college|university|school|classical)\b' 
 
