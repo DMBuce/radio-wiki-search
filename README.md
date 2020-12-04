@@ -1,18 +1,11 @@
 A script I whipped up to search wikipedia for interesting radio stations. It
-parses the wikipedia page for NPR and independent radio stations, then
-searches the summary of each individual radio station's wiki page for the
+downloads all radio station pages on wikipedia and searches them for the
 search terms specified, excluding pages that contain blacklisted search terms.
 
-The script requires a suitably Linux-y shell with `wget`, `xmllint` and `jq`.
-In its current state, keywords are hardcoded as regexes, and it does
-two searches:
+The `dl.py` script requires `lxml`. The files it creates are included in this
+repo so that you don't have to run it if you don't want (it takes a while).
 
-One for stations whose wiki summaries include keyword `music` and exclude
-keywords `news`, `college`, `university`, `school`, and `classical`, with
-output in `keywords/music-sans-boring.html`
-
-And another for stations whose wiki summaries that include keywords `diverse`,
-`diversity`, `mix`, `variety`, `alternative`, `cultural`, or `culture`, and
-excluding keywords `news`, `college`, `university`, `school`, with output in
-`keywords/variety-sans-boring.html`.
+The `make.sh` script does the searching. It searches using hard-coded regexes,
+so twek it to your liking. The output of the three example searches that script
+produces are included as html files in this repo.
 
